@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Login</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-card">
+      <div class="login-hero">
+        <span class="brand-kicker">Enterprise Threat Console</span>
+        <h1>Sentinel Access Gateway</h1>
+        <p>
+          Authenticate into the Security Operations workspace to inspect live telemetry,
+          payload findings, Geo-IP indicators, and containment actions from a single defense console.
+        </p>
+        <div class="terminal-box">
+          <p>> threat-feed sync.............. online</p>
+          <p>> detection pipeline............ armed</p>
+          <p>> operator clearance............ required</p>
+          <p>> websocket telemetry........... awaiting session</p>
+        </div>
+        <p class="footer-note">
+          Demo access: <strong>admin / Admin@123</strong>,
+          <strong>analyst / Analyst@123</strong>,
+          <strong>viewer / Viewer@123</strong>
+        </p>
+      </div>
+      <div class="login-form-wrap">
+        <div>
+          <span class="brand-kicker">SOC Authentication</span>
+          <h2>Secure Sign-In</h2>
+          <p class="helper-text">Use your assigned username or email and password to enter the dashboard.</p>
+        </div>
+        <form id="login-form">
+          <div class="field">
+            <label for="username">Username or Email</label>
+            <input id="username" name="username" type="text" placeholder="admin" required>
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input id="password" name="password" type="password" placeholder="Enter password" required>
+          </div>
+          <button class="btn" type="submit">Authorize Session</button>
+          <p id="login-error" class="helper-text"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/login.js"></script>
+</body>
+</html>

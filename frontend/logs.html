@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Logs</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-root"></div>
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <h2>Threat Logs</h2>
+          <p>Search, filter, and export enriched event history.</p>
+        </div>
+        <div class="topbar-actions">
+          <div id="monitor-status" class="status-pill"><span class="status-dot"></span><span>Initializing</span></div>
+          <div id="topbar-user" class="role-badge"></div>
+          <button class="ghost-btn" data-action="logout">Logout</button>
+        </div>
+      </header>
+      <p id="monitor-note" class="muted"></p>
+
+      <section class="form-card">
+        <form id="logs-filter-form" class="form-grid">
+          <div class="field"><label for="filter-ip">Source IP</label><input id="filter-ip" name="source_ip" type="text" placeholder="45.67.23.90"></div>
+          <div class="field"><label for="filter-severity">Severity</label><select id="filter-severity" name="severity"><option value="">All</option><option>critical</option><option>high</option><option>medium</option><option>low</option><option>info</option></select></div>
+          <div class="field"><label for="filter-type">Detection Type</label><input id="filter-type" name="detection_type" type="text" placeholder="Reconnaissance"></div>
+          <div class="field"><label for="filter-protocol">Protocol</label><select id="filter-protocol" name="protocol"><option value="">All</option><option>TCP</option><option>UDP</option><option>ICMP</option></select></div>
+          <div class="field"><label for="filter-date-from">Date From</label><input id="filter-date-from" name="date_from" type="datetime-local"></div>
+          <div class="field"><label for="filter-date-to">Date To</label><input id="filter-date-to" name="date_to" type="datetime-local"></div>
+        </form>
+        <div class="inline-actions" style="margin-top: 16px;">
+          <button id="apply-log-filters" class="btn">Apply Filters</button>
+          <button id="export-logs" class="ghost-btn">Export CSV</button>
+        </div>
+      </section>
+
+      <section class="table-card" style="margin-top: 20px;">
+        <div class="panel-header">
+          <div><h3>Event History</h3><p>Includes payload findings and Geo-IP enrichment when available.</p></div>
+        </div>
+        <div class="panel-body table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Source IP</th>
+                <th>Severity</th>
+                <th>Type</th>
+                <th>Protocol</th>
+                <th>Risk</th>
+                <th>Geo</th>
+                <th>Payload Findings</th>
+              </tr>
+            </thead>
+            <tbody id="logs-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/logs.js"></script>
+</body>
+</html>

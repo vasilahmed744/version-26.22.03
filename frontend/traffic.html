@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Traffic</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-root"></div>
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <h2>Real-Time Traffic Monitor</h2>
+          <p>Packet telemetry feed with live verdicts and risk scoring.</p>
+        </div>
+        <div class="topbar-actions">
+          <div id="monitor-status" class="status-pill"><span class="status-dot"></span><span>Initializing</span></div>
+          <div id="topbar-user" class="role-badge"></div>
+          <button class="ghost-btn" data-action="logout">Logout</button>
+        </div>
+      </header>
+      <p id="monitor-note" class="muted"></p>
+
+      <section class="table-card">
+        <div class="panel-header">
+          <div><h3>Telemetry Feed</h3><p>Newest packets appear at the top without requiring a page refresh.</p></div>
+        </div>
+        <div class="panel-body table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Timestamp</th>
+                <th>Source IP</th>
+                <th>Destination IP</th>
+                <th>Protocol</th>
+                <th>Src Port</th>
+                <th>Dst Port</th>
+                <th>Packet Size</th>
+                <th>Verdict</th>
+                <th>Risk</th>
+              </tr>
+            </thead>
+            <tbody id="traffic-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/traffic.js"></script>
+</body>
+</html>

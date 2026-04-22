@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Users</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-root"></div>
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <h2>User Management</h2>
+          <p>Admin-only operator provisioning, role changes, and account control.</p>
+        </div>
+        <div class="topbar-actions">
+          <div id="monitor-status" class="status-pill"><span class="status-dot"></span><span>Initializing</span></div>
+          <div id="topbar-user" class="role-badge"></div>
+          <button class="ghost-btn" data-action="logout">Logout</button>
+        </div>
+      </header>
+      <p id="monitor-note" class="muted"></p>
+
+      <section class="form-card">
+        <div class="panel-header" style="padding: 0 0 18px 0;">
+          <div><h3>Create User</h3><p>Provision a new dashboard operator.</p></div>
+        </div>
+        <form id="user-form" class="form-grid">
+          <div class="field"><label for="new-username">Username</label><input id="new-username" required></div>
+          <div class="field"><label for="new-email">Email</label><input id="new-email" type="email" required></div>
+          <div class="field"><label for="new-password">Password</label><input id="new-password" type="password" required></div>
+          <div class="field"><label for="new-role">Role</label><select id="new-role"><option>admin</option><option selected>analyst</option><option>viewer</option></select></div>
+        </form>
+        <div class="inline-actions" style="margin-top: 16px;"><button id="create-user" class="btn">Create User</button></div>
+      </section>
+
+      <section class="table-card" style="margin-top: 20px;">
+        <div class="panel-header"><div><h3>Current Users</h3><p>Update account roles or disable access.</p></div></div>
+        <div class="panel-body table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Last Login</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="users-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/users.js"></script>
+</body>
+</html>

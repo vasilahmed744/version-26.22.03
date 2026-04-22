@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Alerts</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-root"></div>
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <h2>Alert Queue</h2>
+          <p>Investigate detections, acknowledge alerts, and escalate to firewall actions.</p>
+        </div>
+        <div class="topbar-actions">
+          <div id="monitor-status" class="status-pill"><span class="status-dot"></span><span>Initializing</span></div>
+          <div id="topbar-user" class="role-badge"></div>
+          <button class="ghost-btn" data-action="logout">Logout</button>
+        </div>
+      </header>
+      <p id="monitor-note" class="muted"></p>
+
+      <section id="alerts-container"></section>
+    </main>
+  </div>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/alerts.js"></script>
+</body>
+</html>

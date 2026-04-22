@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Firewall</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-root"></div>
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <h2>Firewall Controls</h2>
+          <p>Manage simulated or optional OS-backed block rules for hostile IPs.</p>
+        </div>
+        <div class="topbar-actions">
+          <div id="monitor-status" class="status-pill"><span class="status-dot"></span><span>Initializing</span></div>
+          <div id="topbar-user" class="role-badge"></div>
+          <button class="ghost-btn" data-action="logout">Logout</button>
+        </div>
+      </header>
+      <p id="monitor-note" class="muted"></p>
+
+      <section class="form-card" id="firewall-form-card">
+        <div class="panel-header" style="padding: 0 0 18px 0;">
+          <div><h3>Add Block Rule</h3><p>Create a temporary or permanent block entry.</p></div>
+        </div>
+        <form id="firewall-form" class="form-grid">
+          <div class="field"><label for="block-ip">IP Address</label><input id="block-ip" name="ip_address" type="text" required></div>
+          <div class="field"><label for="block-reason">Reason</label><input id="block-reason" name="reason" type="text" required></div>
+          <div class="field"><label for="block-duration">Duration Minutes</label><input id="block-duration" name="duration_minutes" type="number" min="1" max="10080" value="60"></div>
+          <div class="field"><label for="block-permanent">Block Type</label><select id="block-permanent" name="permanent"><option value="false">Temporary</option><option value="true">Permanent</option></select></div>
+        </form>
+        <div class="inline-actions" style="margin-top: 16px;"><button id="submit-block" class="btn">Add Block</button></div>
+      </section>
+
+      <section class="table-card" style="margin-top: 20px;">
+        <div class="panel-header">
+          <div><h3>Blocked IP List</h3><p>Shows active, expired, and removed entries with enforcement mode.</p></div>
+        </div>
+        <div class="panel-body table-scroll">
+          <table>
+            <thead>
+              <tr>
+                <th>IP Address</th>
+                <th>Reason</th>
+                <th>Status</th>
+                <th>Mode</th>
+                <th>Blocked At</th>
+                <th>Expires</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="firewall-table-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/firewall.js"></script>
+</body>
+</html>

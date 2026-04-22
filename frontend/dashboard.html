@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Dashboard</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-root"></div>
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <h2>Threat Operations Dashboard</h2>
+          <p>Live cyber telemetry, alert load, and suspicious-source visibility.</p>
+        </div>
+        <div class="topbar-actions">
+          <div id="dashboard-controls" class="control-cluster">
+            <button id="start-monitoring" class="btn" type="button">Start Monitoring</button>
+            <button id="stop-monitoring" class="danger-btn" type="button">Stop Monitoring</button>
+            <button id="generate-report" class="ghost-btn" type="button">Generate Report</button>
+          </div>
+          <div id="monitor-status" class="status-pill"><span class="status-dot"></span><span>Initializing</span></div>
+          <div id="topbar-user" class="role-badge"></div>
+          <button class="ghost-btn" data-action="logout">Logout</button>
+        </div>
+      </header>
+      <p id="monitor-note" class="muted"></p>
+
+      <section class="grid metrics">
+        <article class="metric-card"><div class="metric-label">Total Packets</div><div id="metric-total" class="metric-value">0</div><div class="metric-change">Processed telemetry events</div></article>
+        <article class="metric-card"><div class="metric-label">Normal Traffic</div><div id="metric-normal" class="metric-value">0</div><div class="metric-change">Benign baseline behavior</div></article>
+        <article class="metric-card"><div class="metric-label">Suspicious Traffic</div><div id="metric-suspicious" class="metric-value">0</div><div class="metric-change">Requires analyst review</div></article>
+        <article class="metric-card"><div class="metric-label">Attack Count</div><div id="metric-attack" class="metric-value">0</div><div class="metric-change">Confirmed high-risk activity</div></article>
+        <article class="metric-card"><div class="metric-label">Risk Percentage</div><div id="metric-risk" class="metric-value">0%</div><div class="metric-change">Average telemetry risk score</div></article>
+        <article class="metric-card"><div class="metric-label">Active Alerts</div><div id="metric-alerts" class="metric-value">0</div><div class="metric-change">Open detections awaiting action</div></article>
+      </section>
+
+      <section class="grid two-column" style="margin-top: 20px;">
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Traffic Trend</h3>
+              <p>Packets processed over recent monitoring intervals.</p>
+            </div>
+          </div>
+          <div class="panel-body"><canvas id="trafficTrendChart" height="110"></canvas></div>
+        </article>
+        <article class="panel">
+          <div class="panel-header">
+            <div>
+              <h3>Protocol Distribution</h3>
+              <p>Protocol mix from the current dataset.</p>
+            </div>
+          </div>
+          <div class="panel-body"><canvas id="protocolChart" height="110"></canvas></div>
+        </article>
+      </section>
+
+      <section class="grid equal" style="margin-top: 20px;">
+        <article class="panel">
+          <div class="panel-header"><div><h3>Live Event Stream</h3><p>Recent packet decisions and detection summaries.</p></div></div>
+          <div class="panel-body event-stream" id="live-events"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-header"><div><h3>Top Suspicious IPs</h3><p>Most frequent sources producing non-normal verdicts.</p></div></div>
+          <div class="panel-body"><ul class="plain-list" id="top-suspicious"></ul></div>
+        </article>
+        <article class="panel">
+          <div class="panel-header"><div><h3>Geo Summary</h3><p>Countries associated with suspicious activity.</p></div></div>
+          <div class="panel-body"><ul class="plain-list" id="geo-summary"></ul></div>
+        </article>
+      </section>
+    </main>
+  </div>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/dashboard.js"></script>
+</body>
+</html>

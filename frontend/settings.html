@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentinel Settings</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+  <div class="app-layout">
+    <div id="sidebar-root"></div>
+    <main class="app-main">
+      <header class="topbar">
+        <div>
+          <h2>Monitoring Settings</h2>
+          <p>Control operating mode, detection thresholds, and inspection policy.</p>
+        </div>
+        <div class="topbar-actions">
+          <div id="monitor-status" class="status-pill"><span class="status-dot"></span><span>Initializing</span></div>
+          <div id="topbar-user" class="role-badge"></div>
+          <button class="ghost-btn" data-action="logout">Logout</button>
+        </div>
+      </header>
+      <p id="monitor-note" class="muted"></p>
+
+      <section class="switch-grid">
+        <article class="switch-card"><header><div><strong>Demo Mode</strong><p class="muted">Generates realistic safe traffic for demonstrations.</p></div><input id="demo_mode" class="toggle" type="checkbox"></header></article>
+        <article class="switch-card"><header><div><strong>Live Mode</strong><p class="muted">Attempts optional live packet capture with safe fallback.</p></div><input id="live_mode" class="toggle" type="checkbox"></header></article>
+        <article class="switch-card"><header><div><strong>Payload Inspection</strong><p class="muted">Enable SQLi, XSS, command, shell, and traversal checks.</p></div><input id="payload_inspection_enabled" class="toggle" type="checkbox"></header></article>
+        <article class="switch-card"><header><div><strong>Firewall Simulation</strong><p class="muted">Keep block actions demo-safe unless disabled by admin.</p></div><input id="firewall_simulation_enabled" class="toggle" type="checkbox"></header></article>
+        <article class="switch-card"><header><div><strong>Geo-IP Enrichment</strong><p class="muted">Enrich suspicious public IPs with location metadata.</p></div><input id="geoip_enabled" class="toggle" type="checkbox"></header></article>
+        <article class="switch-card"><header><div><strong>Auto-Block High Risk</strong><p class="muted">Automatically create temporary blocks for severe detections.</p></div><input id="auto_block_high_risk" class="toggle" type="checkbox"></header></article>
+        <article class="switch-card"><header><div><strong>Alert on Medium</strong><p class="muted">Generate alerts for medium severity detections.</p></div><input id="alert_on_medium" class="toggle" type="checkbox"></header></article>
+        <article class="switch-card"><header><div><strong>Alert on High</strong><p class="muted">Generate alerts for high severity detections.</p></div><input id="alert_on_high" class="toggle" type="checkbox"></header></article>
+      </section>
+
+      <section class="form-card" style="margin-top: 20px;">
+        <div class="panel-header" style="padding: 0 0 18px 0;">
+          <div><h3>Thresholds and Capture</h3><p>Fine-tune detector sensitivity and live capture configuration.</p></div>
+        </div>
+        <form id="settings-form" class="form-grid">
+          <div class="field"><label for="detection_threshold">Detection Threshold</label><input id="detection_threshold" type="number" min="1" max="100"></div>
+          <div class="field"><label for="max_events_per_minute">Max Events Per Minute</label><input id="max_events_per_minute" type="number" min="10" max="10000"></div>
+          <div class="field"><label for="live_capture_interface">Live Capture Interface</label><input id="live_capture_interface" type="text" placeholder="Optional interface name"></div>
+        </form>
+        <div class="inline-actions" style="margin-top: 16px;"><button id="save-settings" class="btn">Save Settings</button></div>
+      </section>
+    </main>
+  </div>
+  <script src="/assets/js/app.js"></script>
+  <script src="/assets/js/settings.js"></script>
+</body>
+</html>
